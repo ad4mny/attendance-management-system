@@ -5,3 +5,5 @@ $route['default_controller'] = 'LoginController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login'] = 'LoginController';
+$route['login/submit'] = 'LoginController/login';
