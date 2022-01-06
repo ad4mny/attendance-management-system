@@ -12,12 +12,12 @@
                 <small class="text-muted">Password:</small>
                 <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
-            <div class="col-12 text-center pt-3">
+            <div class="col-12 text-center py-3">
                 <input type="submit" name="submit" class="btn btn-primary text-white" value="Login">
             </div>
+            <div class="col-12 text-center">
+                <small class="text-muted"><a href="<?php echo base_url(); ?>register" class="text-primary">Register</a> for a new account.</small><br>
+            </div>
         </form>
-        <div class="col-12 text-center pt-3">
-            <small class="text-muted"><a href="<?php echo base_url(); ?>register" class="text-primary">Register</a> for a new account.</small><br>
-        </div>
     </div>
 </div>

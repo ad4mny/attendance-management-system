@@ -9,10 +9,14 @@ class LoginController extends CI_Controller
         $this->load->model('LoginModel');
     }
 
-    public function index()
+    public function index($page = 'login')
     {
         $this->load->view('templates/HeaderTemplate');
-        $this->load->view('LoginView');
+        if ($page == 'register') {
+            $this->load->view('RegisterView');
+        } else {
+            $this->load->view('LoginView');
+        }
         $this->load->view('templates/FooterTemplate');
     }
 
@@ -25,8 +29,14 @@ class LoginController extends CI_Controller
 
         if ($return !== NULL) {
             $this->session->set_userdata('uid', $return['u_id']);
+            $this->session->set_userdata('type', $return['u_type']);
             $this->session->set_tempdata('notice', 'Login successful.', 1);
-            redirect(base_url() . 'dashboard');
+
+            if ($this->session->userdata('type') == 1) {
+                redirect(base_url() . 'lecturer/dashboard');
+            } else {
+                redirect(base_url() . 'dashboard');
+            }
         } else {
             $this->session->set_tempdata('error', 'Wrong username or password entered.', 1);
             redirect(base_url() . 'login');
@@ -42,16 +52,16 @@ class LoginController extends CI_Controller
 
         if ($password !== $c_password) {
             $this->session->set_tempdata('error', 'Password does not match, please register again.', 1);
-            redirect(base_url() . 'login');
+            redirect(base_url() . 'register');
         } else if ($this->checkUsername($username) !== null) {
             $this->session->set_tempdata('error', 'Username has been taken, please choose another username.', 1);
-            redirect(base_url() . 'login');
+            redirect(base_url() . 'register');
         } else {
             if ($this->LoginModel->register($username, md5($password), $type) === true) {
                 $this->login($username, $password);
             } else {
                 $this->session->set_tempdata('error', 'Registration failed, please register again.', 1);
-                redirect(base_url() . 'login');
+                redirect(base_url() . 'register');
             }
         }
     }
