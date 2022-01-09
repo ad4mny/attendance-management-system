@@ -7,27 +7,29 @@ class LoginModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('users');
-        $this->db->where('u_username', $username);
-        $this->db->where('u_password', $password);
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
         return $this->db->get()->row_array();
     }
 
-    public function register($username, $password, $type)
+    public function register($firstName, $lastName, $username, $password, $role)
     {
-        $data = array(
-            'u_username' => $username,
-            'u_password' => $password,
-            'u_type' => $type
+        $users = array(
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'username' => $username,
+            'password' => $password,
+            'role' => $role
         );
 
-        return $this->db->insert('users', $data);
+        return $this->db->insert('users', $users);
     }
 
     public function checkUsername($username)
     {
         $this->db->select('*');
         $this->db->from('users');
-        $this->db->where('u_username', $username);
+        $this->db->where('username', $username);
         return $this->db->get()->row_array();
     }
 }

@@ -28,11 +28,11 @@ class LoginController extends CI_Controller
         $return = $this->LoginModel->login($username, $password);
 
         if ($return !== NULL) {
-            $this->session->set_userdata('uid', $return['u_id']);
-            $this->session->set_userdata('type', $return['u_type']);
+            $this->session->set_userdata('userID', $return['userID']);
+            $this->session->set_userdata('role', $return['role']);
             $this->session->set_tempdata('notice', 'Login successful.', 1);
 
-            if ($this->session->userdata('type') == 1) {
+            if ($this->session->userdata('role') == 1) {
                 redirect(base_url() . 'lecturer/dashboard');
             } else {
                 redirect(base_url() . 'dashboard');
@@ -45,19 +45,21 @@ class LoginController extends CI_Controller
 
     public function register()
     {
+        $firstName = $this->input->post('firstName');
+        $lastName = $this->input->post('lastName');
         $username = $this->input->post('username');
-        $type = $this->input->post('type');
+        $role = $this->input->post('role');
         $password = $this->input->post('password');
-        $c_password = $this->input->post('c_password');
+        $comparePassword = $this->input->post('comparePassword');
 
-        if ($password !== $c_password) {
+        if ($password !== $comparePassword) {
             $this->session->set_tempdata('error', 'Password does not match, please register again.', 1);
             redirect(base_url() . 'register');
         } else if ($this->checkUsername($username) !== null) {
             $this->session->set_tempdata('error', 'Username has been taken, please choose another username.', 1);
             redirect(base_url() . 'register');
         } else {
-            if ($this->LoginModel->register($username, md5($password), $type) === true) {
+            if ($this->LoginModel->register($firstName, $lastName, $username, md5($password), $role) === true) {
                 $this->login($username, $password);
             } else {
                 $this->session->set_tempdata('error', 'Registration failed, please register again.', 1);
@@ -73,12 +75,12 @@ class LoginController extends CI_Controller
 
     public function logout()
     {
-        $session_data = array(
-            'uid',
-        );
-
         $this->session->set_tempdata('notice', 'You have logout successfully.', 1);
-        $this->session->unset_userdata($session_data);
+
+        $this->session->unset_userdata(array(
+            'userID',
+            'role'
+        ));
 
         redirect();
     }
