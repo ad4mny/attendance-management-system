@@ -16,7 +16,7 @@
 </head>
 
 <body class="bg-light">
-    
+
     <div class="w-auto position-absolute start-50 translate-middle mt-5">
         <?php
         if ($this->session->tempdata('notice') != NULL) {
