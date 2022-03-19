@@ -75,15 +75,15 @@
                             <tr>
                                 <td><?php echo ++$num; ?></td>
                                 <td>
-                                    <p class="text-truncate mb-0"><?php echo $row["className"]; ?></p>
+                                    <p class="text-truncate mb-0"><?php echo $row["name"]; ?></p>
                                     <small class="text-muted">SECTION</small>
-                                    <small><?php echo $row["classSection"]; ?></small><br>
+                                    <small><?php echo $row["section"]; ?></small><br>
                                     <small class="text-muted">DATETIME</small>
                                     <small><?php echo $row["date"] . ' ' . $row["time"]; ?></small>
                                     
                                 </td>
                                 <td class="font-italic text-primary">
-                                    <?php echo $row["classCode"]; ?>
+                                    <?php echo $row["code"]; ?>
                                 </td>
                                 <td>
                                     <div class="btn-group">
@@ -92,12 +92,12 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="<?php echo base_url() . 'lecturer/class/view/' . $row["classID"]; ?>" class="dropdown-item">
+                                                <a href="<?php echo base_url() . 'lecturer/class/view/' . $row["class_id"]; ?>" class="dropdown-item">
                                                     View
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url() . 'lecturer/class/delete/' . $row["classID"]; ?>" class="dropdown-item">
+                                                <a href="<?php echo base_url() . 'lecturer/class/delete/' . $row["class_id"]; ?>" class="dropdown-item">
                                                     Delete
                                                 </a>
                                             </li>

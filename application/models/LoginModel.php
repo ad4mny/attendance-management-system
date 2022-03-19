@@ -15,8 +15,8 @@ class LoginModel extends CI_Model
     public function register($firstName, $lastName, $username, $password, $role)
     {
         $users = array(
-            'firstName' => $firstName,
-            'lastName' => $lastName,
+            'firstname' => $firstName,
+            'lastname' => $lastName,
             'username' => $username,
             'password' => $password,
             'role' => $role

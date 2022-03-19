@@ -28,7 +28,7 @@ class LoginController extends CI_Controller
         $return = $this->LoginModel->login($username, $password);
 
         if ($return !== NULL) {
-            $this->session->set_userdata('userID', $return['userID']);
+            $this->session->set_userdata('id', $return['id']);
             $this->session->set_userdata('role', $return['role']);
             $this->session->set_tempdata('notice', 'Login successful.', 1);
 

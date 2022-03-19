@@ -7,18 +7,18 @@ class LecturerModel extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('classes');
-        $this->db->where('lecturerID', $_SESSION['userID']);
-        $this->db->order_by('classID', 'DESC');
+        $this->db->where('lecturer_id', $_SESSION['id']);
+        $this->db->order_by('class_id', 'DESC');
         return $this->db->get()->result_array();
     }
 
     public function setNewClassModel($course, $classSection, $classCode)
     {
         $classes = array(
-            'lecturerID' => $_SESSION['userID'],
-            'className' => $course,
-            'classSection' => $classSection,
-            'classCode' => $classCode,
+            'lecturer_id' => $_SESSION['id'],
+            'name' => $course,
+            'section' => $classSection,
+            'code' => $classCode,
             'date' => date('Y-m-d'),
             'time' => date('h:i:s')
         );
