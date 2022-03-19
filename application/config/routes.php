@@ -12,6 +12,9 @@ $route['register/submit'] = 'LoginController/register';
 $route['logout'] = 'LoginController/logout';
 
 $route['(:any)'] = 'StudentController/index/$1';
+$route['attendance/submit'] = 'StudentController/setNewAttendance';
 
 $route['lecturer/(:any)'] = 'LecturerController/index/$1';
 $route['lecturer/class/submit'] = 'LecturerController/setNewClass';
+$route['lecturer/attendance/(:any)'] = 'LecturerController/index/attendance/$1';
+

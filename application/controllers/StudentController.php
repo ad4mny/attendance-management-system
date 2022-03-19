@@ -30,4 +30,15 @@ class StudentController extends CI_Controller
     {
         return $this->StudentModel->getAttendanceListModel();
     }
+
+    public function setNewAttendance()
+    {
+        if ($this->StudentModel->setNewAttendanceModel($this->input->post('code')) === TRUE) {
+            $this->session->set_tempdata('notice', 'Success! Your attendance has been recorded.', 1);
+            redirect(base_url() . 'dashboard');
+        } else {
+            $this->session->set_tempdata('notice', 'Failed! Please check your class code.', 1);
+            redirect(base_url() . 'dashboard');
+        }
+    }
 }

@@ -92,12 +92,12 @@
                                         </a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="<?php echo base_url() . 'lecturer/class/view/' . $row["class_id"]; ?>" class="dropdown-item">
+                                                <a href="<?php echo base_url() . 'lecturer/attendance/' . $row["class_id"]; ?>" class="dropdown-item">
                                                     View
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url() . 'lecturer/class/delete/' . $row["class_id"]; ?>" class="dropdown-item">
+                                                <a href="<?php echo base_url() . 'lecturer/attendance/delete/' . $row["class_id"]; ?>" class="dropdown-item">
                                                     Delete
                                                 </a>
                                             </li>

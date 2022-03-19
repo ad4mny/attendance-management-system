@@ -7,10 +7,10 @@
     <div class="row">
         <div class="col-4 p-4 bg-white shadow">
             <form class="row g-3" method="post" action="<?php echo base_url(); ?>attendance/submit">
-                <div class="col">
-                    <input type="text" class="form-control" name="classCode" placeholder="Enter your class code here." required>
+                <div class="col-auto">
+                    <input type="text" class="form-control" name="code" placeholder="Enter your class code here." required>
                 </div>
-                <div class="col">
+                <div class="col-auto">
                     <input type="submit" class=" btn btn-primary text-white" name="submit" value="Submit Attendance">
                 </div>
             </form>
@@ -32,10 +32,10 @@
                             <tr>
                                 <td><?php echo ++$num; ?></td>
                                 <td>
-                                    <?php echo $row["className"]; ?>
+                                    <?php echo $row["name"]; ?>
                                 </td>
                                 <td>
-                                    <?php echo $row["classSection"]; ?>
+                                    <?php echo $row["section"]; ?>
                                 </td>
                                 <td>
                                     <?php echo $row["date"]; ?>

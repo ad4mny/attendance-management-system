@@ -25,4 +25,14 @@ class LecturerModel extends CI_Model
         
         return $this->db->insert('classes', $classes);
     }
+
+    public function getAttendancesListModel($class_id)
+    {
+        $this->db->select('*');
+        $this->db->from('attendances');
+        $this->db->join('users', 'attendances.student_id = users.id');
+        $this->db->where('class_id', $class_id);
+        $this->db->order_by('attendance_id', 'DESC');
+        return $this->db->get()->result_array();
+    }
 }

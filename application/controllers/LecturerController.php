@@ -9,13 +9,15 @@ class LecturerController extends CI_Controller
         $this->load->model('LecturerModel');
     }
 
-    public function index($page = 'dashboard')
+    public function index($page = 'dashboard', $class_id = NULL)
     {
         $this->load->view('templates/HeaderTemplate');
         $this->load->view('templates/NavigationTemplate');
 
         switch ($page) {
-            case '':
+            case 'attendance':
+                $data['attendances'] = $this->getAttendancesList($class_id);
+                $this->load->view('lecturer/AttendanceListView', $data);
                 break;
             default:
                 $data['classes'] = $this->getClassList();
@@ -29,6 +31,11 @@ class LecturerController extends CI_Controller
     public function getClassList()
     {
         return $this->LecturerModel->getClassListModel();
+    } 
+    
+    public function getAttendancesList($class_id)
+    {
+        return $this->LecturerModel->getAttendancesListModel($class_id);
     }
 
     public function setNewClass()
