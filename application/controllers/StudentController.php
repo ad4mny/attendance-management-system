@@ -37,7 +37,24 @@ class StudentController extends CI_Controller
             $this->session->set_tempdata('notice', 'Success! Your attendance has been recorded.', 1);
             redirect(base_url() . 'dashboard');
         } else {
-            $this->session->set_tempdata('notice', 'Failed! Please check your class code.', 1);
+            $this->session->set_tempdata('error', 'Failed! Please check your class code or you already submitted one.', 1);
+            redirect(base_url() . 'dashboard');
+        }
+    }
+
+    public function setNewReview()
+    {
+        $chapter = $this->input->post('chapter');
+        $learn = $this->input->post('learn');
+        $understanding = $this->input->post('understanding');
+        $question = $this->input->post('question');
+        $attendance_id = $this->input->post('attendance_id');
+
+        if ($this->StudentModel->setNewReviewModel($chapter, $learn, $understanding, $question, $attendance_id) === TRUE) {
+            $this->session->set_tempdata('notice', 'Success! Your class review has been recorded.', 1);
+            redirect(base_url() . 'dashboard');
+        } else {
+            $this->session->set_tempdata('error', 'Failed! Please try again.', 1);
             redirect(base_url() . 'dashboard');
         }
     }

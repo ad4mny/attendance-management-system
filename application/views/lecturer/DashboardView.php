@@ -48,14 +48,22 @@
                     </div>
                 </div>
                 <div class="col-12">
+                    <small>Class Date:</small>
+                    <input type="date" class="form-control" name="date">
+                </div>
+                <div class="col-12">
+                    <small>Class Time:</small>
+                    <input type="time" class="form-control" name="time">
+                </div>
+                <div class="col-12">
                     <input type="submit" class="btn btn-primary text-white" name="submit" value="Generate Class Code">
                 </div>
             </form>
         </div>
         <div class="col-8">
             <h1 class="fw-light border-bottom text-muted">Class List</h1>
-            <div class="bg-white p-4 shadow">
-                <table class="table table-hover w-50">
+            <div class="bg-white p-4 shadow  table-responsive fixed-table-body">
+                <table class="table table-hover">
                     <tr>
                         <th> No </th>
                         <th> Class </th>
@@ -80,7 +88,6 @@
                                     <small><?php echo $row["section"]; ?></small><br>
                                     <small class="text-muted">DATETIME</small>
                                     <small><?php echo $row["date"] . ' ' . $row["time"]; ?></small>
-                                    
                                 </td>
                                 <td class="font-italic text-primary">
                                     <?php echo $row["code"]; ?>
@@ -97,7 +104,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="<?php echo base_url() . 'lecturer/attendance/delete/' . $row["class_id"]; ?>" class="dropdown-item">
+                                                <a href="<?php echo base_url() . 'lecturer/class/delete/' . $row["class_id"]; ?>" class="dropdown-item">
                                                     Delete
                                                 </a>
                                             </li>

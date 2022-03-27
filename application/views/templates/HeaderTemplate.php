@@ -17,7 +17,7 @@
 
 <body class="bg-light">
 
-    <div class="w-auto position-absolute start-50 translate-middle mt-5">
+    <div class="w-auto position-absolute start-50 translate-middle-x mt-5 py-3">
         <?php
         if ($this->session->tempdata('notice') != NULL) {
             echo '<div class="alert alert-light shadow-sm alert-dismissible fade show" role="alert">';
