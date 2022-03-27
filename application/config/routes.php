@@ -14,10 +14,12 @@ $route['logout'] = 'LoginController/logout';
 $route['(:any)'] = 'StudentController/index/$1';
 $route['attendance/submit'] = 'StudentController/setNewAttendance';
 $route['attendance/review/submit'] = 'StudentController/setNewReview';
+$route['attendance/absent/submit'] = 'StudentController/setAbsent';
 
 $route['lecturer/(:any)'] = 'LecturerController/index/$1';
 $route['lecturer/class/submit'] = 'LecturerController/setNewClass';
 $route['lecturer/attendance/(:any)'] = 'LecturerController/index/attendance/$1';
 $route['lecturer/class/delete/(:any)'] = 'LecturerController/deleteClass/$1';
 $route['lecturer/review/(:any)'] = 'LecturerController/getClassReview/$1';
+$route['lecturer/absent/(:any)'] = 'LecturerController/getAbsentReason/$1';
 

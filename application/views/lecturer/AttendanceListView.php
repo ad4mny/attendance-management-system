@@ -10,7 +10,7 @@
                         <th> Date Attend </th>
                         <th> Time Attend </th>
                         <th> Status </th>
-                        <th>  </th>
+                        <th> </th>
                     </tr>
                     <?php
                     $num = 0;
@@ -55,7 +55,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="<?php echo base_url() . 'lecturer/review/' . $row["attendance_id"]; ?>" class="btn btn-outline-primary">View review</button>
+                                    <?php if ($row["status"] == 'Absent') {
+                                        echo ' <a href="' . base_url() . 'lecturer/absent/' . $row["attendance_id"] . '" class="btn btn-outline-primary">View absent</button>';
+                                    } else {
+                                        echo ' <a href="' . base_url() . 'lecturer/review/' . $row["attendance_id"] . '" class="btn btn-outline-primary">View review</button>';
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                     <?php

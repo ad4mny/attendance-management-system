@@ -48,6 +48,17 @@ class LecturerModel extends CI_Model
         $this->db->from('attendances');
         $this->db->join('users', 'attendances.student_id = users.id');
         $this->db->where('attendance_id', $attendance_id);
+        $this->db->where('status !=', 'Absent');
+        return $this->db->get()->row_array();
+    }
+
+    public function getAbsentReasonModel($attendance_id)
+    {
+        $this->db->select('*');
+        $this->db->from('attendances');
+        $this->db->join('users', 'attendances.student_id = users.id');
+        $this->db->where('attendance_id', $attendance_id);
+        $this->db->where('status', 'Absent');
         return $this->db->get()->row_array();
     }
 }

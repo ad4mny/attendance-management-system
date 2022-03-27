@@ -66,7 +66,19 @@ class StudentModel extends CI_Model
             'understanding_rate' => $understanding,
             'question' => $question
         );
-        
+
+        $this->db->where('attendance_id', $attendance_id);
+        return $this->db->update('attendances', $attendances);
+    }
+
+    public function setAbsentModel($type, $reason, $file, $attendance_id)
+    {
+        $attendances = array(
+            'absent_type' => $type,
+            'absent_reason' => $reason,
+            'absent_file' => $file
+        );
+
         $this->db->where('attendance_id', $attendance_id);
         return $this->db->update('attendances', $attendances);
     }

@@ -76,4 +76,14 @@ class LecturerController extends CI_Controller
         $this->load->view('lecturer/ClassReviewView', $data);
         $this->load->view('templates/FooterTemplate');
     }
+
+    public function getAbsentReason($attendance_id)
+    {
+        $data['absents'] = $this->LecturerModel->getAbsentReasonModel($attendance_id);
+
+        $this->load->view('templates/HeaderTemplate');
+        $this->load->view('templates/NavigationTemplate');
+        $this->load->view('lecturer/AbsentView', $data);
+        $this->load->view('templates/FooterTemplate');
+    }
 }
